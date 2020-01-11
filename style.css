@@ -23,6 +23,13 @@
   transition: width 0.4s;
 }
 
+.toolbar h1 {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  padding-top: 10px;
+  color: #202020;
+}
+
 /* Begin Transition Section: Toolbar grow on hover */
 
 .toolbar:hover {
@@ -41,6 +48,18 @@
 
 .toolbar:hover .create p,
 .toolbar:hover .clear p {
+  opacity: 100;
+}
+
+.toolbar:hover .logo-icon {
+  color: #449696;
+}
+
+.logo-icon {
+  transition: 0.4s;
+}
+
+.toolbar:hover .copyright {
   opacity: 100;
 }
 
@@ -116,4 +135,13 @@
   font-size: 14px;
   opacity: 0;
   transition: opacity 0.4s;
+}
+
+.copyright {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  color: #797979;
+  padding-bottom: 5px;
+  opacity: 0;
+  transition: 0.4s;
 }
