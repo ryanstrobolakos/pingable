@@ -46,3 +46,13 @@
   height: 55px;
   text-align: center;
 }
+
+.create-icon {
+  color: #f4f4f4;
+  font-size: 30px;
+}
+
+.clear-icon {
+  color: #f4f4f4;
+  font-size: 20px;
+}
