@@ -13,11 +13,36 @@
 
 .toolbar {
   background-color: #f4f4f4;
-  width: 100px;
+  width: 120px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   right: 0;
   position: absolute;
+}
+
+.create,
+.clear {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.create-button {
+  background-color: #449696;
+  border: none;
+  border-radius: 50%;
+  width: 77px;
+  height: 77px;
+  text-align: center;
+}
+
+.clear-button {
+  background-color: #449696;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  text-align: center;
 }
