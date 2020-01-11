@@ -157,3 +157,13 @@
   opacity: 0;
   transition: 0.4s;
 }
+
+.workspace > button {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: lightcoral;
+  border: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+}
