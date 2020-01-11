@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
   });
 
   const createEndpoint = () => {
-    const endpointButton = document.createElement("button");
+    const endpointButton = document.createElement("div");
     endpointButton.innerHTML = "Click to Configure";
     workspace.appendChild(endpointButton);
 

@@ -157,7 +157,7 @@
   transition: 0.4s;
 }
 
-.workspace > button {
+.workspace > div {
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -165,10 +165,13 @@
   border: none;
   outline: none;
   font-family: "Roboto", sans-serif;
+  font-size: 10px;
   color: white;
   margin: 7px;
+  text-align: center;
+  line-height: 100px;
 }
 
-.workspace > button:hover {
+.workspace > div:hover {
   background-color: #ee4242;
 }
