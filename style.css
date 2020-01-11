@@ -58,6 +58,7 @@
 .create-button {
   background-color: #449696;
   border: none;
+  outline: none;
   border-radius: 50%;
   width: 77px;
   height: 77px;
@@ -68,12 +69,34 @@
 .clear-button {
   background-color: #449696;
   border: none;
+  outline: none;
   border-radius: 50%;
   width: 55px;
   height: 55px;
   text-align: center;
   transition: width 0.4s, height 0.4s;
 }
+
+/* Begin Transition Section: Button transitions */
+
+.toolbar:hover .create-button:hover {
+  width: 93px;
+  height: 93px;
+  transition: 0.1s;
+}
+
+.toolbar:hover .clear-button:hover {
+  width: 67px;
+  height: 67px;
+  transition: 0.1s;
+}
+
+.create-button:active,
+.clear-button:active {
+  background-color: #2d8282;
+}
+
+/* End Transition Section: Button transitions */
 
 .create-icon {
   color: #f4f4f4;
