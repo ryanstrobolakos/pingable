@@ -114,6 +114,7 @@
   width: 93px;
   height: 93px;
   transition: 0.1s;
+  background-color: #6e6e6e;
 }
 
 .toolbar:hover .clear-button:hover {
@@ -122,7 +123,6 @@
   transition: 0.1s;
 }
 
-.create-button:active,
 .clear-button:active {
   background-color: #2d8282;
 }

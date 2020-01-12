@@ -1,22 +1,53 @@
 window.addEventListener("load", () => {
   const workspace = document.querySelector(".workspace");
-  const createButton = document.querySelector(".create-button");
+  const endpointButton_1 = document.querySelector("#endpoint-1");
   const clearButton = document.querySelector(".clear-button");
 
-  createButton.addEventListener("click", function() {
-    createEndpoint();
+  let clickCount = 0;
+  endpointButton_1.addEventListener("click", () => {
+    if (clickCount == 0) {
+      endpointButton_1.style.backgroundColor = "#449696";
+      clickCount = 1;
+      endpointButton_1.addEventListener("mouseenter", () => {
+        endpointButton_1.style.backgroundColor = "#2d8282";
+      });
+      endpointButton_1.addEventListener("mouseleave", () => {
+        endpointButton_1.style.backgroundColor = "#449696";
+      });
+    } else {
+      endpointButton_1.style.backgroundColor = "#818181";
+      clickCount = 0;
+      endpointButton_1.addEventListener("mouseenter", () => {
+        endpointButton_1.style.backgroundColor = "#6e6e6e";
+      });
+      endpointButton_1.addEventListener("mouseleave", () => {
+        endpointButton_1.style.backgroundColor = "#818181";
+      });
+    }
   });
 
-  const createEndpoint = () => {
-    const endpointButton = document.createElement("div");
-    endpointButton.innerHTML = "Click to Configure";
-    workspace.appendChild(endpointButton);
+  // function inactiveMouseEnter(){
+  //   endpointButton_1.style.backgroundColor = "#6e6e6e";
+  // }
 
-    clearButton.addEventListener("click", function() {
-      const clearEndpoints = () => {
-        workspace.removeChild(endpointButton);
-      };
-      clearEndpoints();
-    });
-  };
+  // function inactiveMouseLeave(){
+  //   endpointButton_1.style.backgroundColor = "#818181";
+  // }
+
+  //   createButton.addEventListener("click", function() {
+  //     createEndpoint();
+  //   });
+
+  //   const createEndpoint = () => {
+  //     const endpointButton = document.createElement("div");
+  //     endpointButton.innerHTML = "Click to Configure";
+  //     workspace.appendChild(endpointButton);
+
+  //     clearButton.addEventListener("click", function() {
+  //       const clearEndpoints = () => {
+  //         workspace.removeChild(endpointButton);
+  //       };
+  //       clearEndpoints();
+  //     });
+  //   };
 });
