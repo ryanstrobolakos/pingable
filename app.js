@@ -1,6 +1,6 @@
 window.addEventListener("load", () => {
   const workspace = document.querySelector(".workspace");
-  const endpointButton_1 = document.querySelector("#endpoint-1");
+  const endpointButton_1 = document.querySelector("#endpoint-button-1");
   const clearButton = document.querySelector(".clear-button");
 
   let clickCount = 0;
