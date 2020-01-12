@@ -43,27 +43,60 @@
   border-radius: 50%;
   border: 0.5px solid #818181;
   outline: none;
-  background-color: #f4f4f4;
+  background-color: white;
   cursor: pointer;
   color: #818181;
 }
 
 .endpoints input {
-  background-color: #f4f4f4;
+  background-color: white;
   border: 0.5px solid #818181;
+  border-radius: 5px;
   height: 20px;
   outline: none;
   font-family: "Roboto", sans-serif;
+  text-align: center;
 }
 
 .input-buttons .submit-input {
+  background-color: white;
+  color: #bfe4ad;
+}
+
+.input-buttons .clear-input {
+  background-color: white;
+  color: #f4b6b6;
+}
+
+.icon-buttons button:hover {
+  background-color: #818181;
+  color: white;
+}
+
+.icon-buttons button:active {
+  background-color: #6e6e6e;
+}
+
+.endpoints input:focus {
+  border: 0.5px solid #449696;
+}
+
+.input-buttons .submit-input:hover {
   background-color: #bfe4ad;
   color: white;
 }
 
-.input-buttons .clear-input {
+.input-buttons .submit-input:active {
+  background-color: #a4c494;
+}
+
+.input-buttons .clear-input:hover {
   background-color: #f4b6b6;
   color: white;
+}
+
+.input-buttons .clear-input:active {
+  background-color: #d6a1a1;
 }
 
 .toolbar {
