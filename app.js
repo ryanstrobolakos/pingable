@@ -1,8 +1,14 @@
 window.addEventListener("load", () => {
-  const workspace = document.querySelector(".workspace");
   const endpointButton_1 = document.querySelector("#endpoint-button-1");
   const endpoint_1 = document.querySelector("#endpoint-1");
+  const configurationDetails_1 = document.querySelector(
+    "#configuration-details-1"
+  );
+  const clickToConfigure_1 = document.querySelector(".click-to-configure-1");
+  const submitInput_1 = document.querySelector(".submit-input-1");
   const clearButton = document.querySelector(".clear-button");
+
+  //endpointButton_1 click functionality
 
   let clickCount = 0;
   endpointButton_1.addEventListener("click", () => {
@@ -31,28 +37,22 @@ window.addEventListener("load", () => {
     }
   });
 
-  // function inactiveMouseEnter(){
-  //   endpointButton_1.style.backgroundColor = "#6e6e6e";
-  // }
+  //endpoint_1 click functionality
+  endpoint_1.addEventListener("click", () => {
+    configurationDetails_1.style.opacity = 100;
+    clickToConfigure_1.style.opacity = 0;
+    endpoint_1.addEventListener("mouseenter", () => {
+      clickToConfigure_1.style.opacity = 0;
+    });
+  });
 
-  // function inactiveMouseLeave(){
-  //   endpointButton_1.style.backgroundColor = "#818181";
-  // }
-
-  //   createButton.addEventListener("click", function() {
-  //     createEndpoint();
-  //   });
-
-  //   const createEndpoint = () => {
-  //     const endpointButton = document.createElement("div");
-  //     endpointButton.innerHTML = "Click to Configure";
-  //     workspace.appendChild(endpointButton);
-
-  //     clearButton.addEventListener("click", function() {
-  //       const clearEndpoints = () => {
-  //         workspace.removeChild(endpointButton);
-  //       };
-  //       clearEndpoints();
-  //     });
-  //   };
+  submitInput_1.addEventListener("click", () => {
+    configurationDetails_1.style.opacity = 0;
+    endpoint_1.addEventListener("mouseenter", () => {
+      clickToConfigure_1.style.opacity = 100;
+    });
+    endpoint_1.addEventListener("mouseleave", () => {
+      clickToConfigure_1.style.opacity = 0;
+    });
+  });
 });

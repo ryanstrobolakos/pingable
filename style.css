@@ -45,7 +45,7 @@
   justify-content: center;
 }
 
-.click-to-configure {
+.click-to-configure-1 {
   font-family: "Roboto", sans-serif;
   text-align: center;
   color: white;
@@ -60,7 +60,7 @@
   height: 160px;
 }
 
-.circle:hover .click-to-configure {
+.circle:hover .click-to-configure-1 {
   opacity: 100;
 }
 
@@ -99,7 +99,7 @@
   text-align: center;
 }
 
-.input-buttons .submit-input {
+.input-buttons .submit-input-1 {
   background-color: white;
   color: #bfe4ad;
 }
@@ -124,12 +124,12 @@
   border: 0.5px solid #449696;
 }
 
-.input-buttons .submit-input:hover {
+.input-buttons .submit-input-1:hover {
   background-color: #bfe4ad;
   color: white;
 }
 
-.input-buttons .submit-input:active {
+.input-buttons .submit-input-1:active {
   background-color: #a4c494;
 }
 
