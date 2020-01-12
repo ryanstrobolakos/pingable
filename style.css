@@ -86,13 +86,14 @@
 }
 
 .create-button {
-  background-color: #449696;
+  background-color: #818181;
   border: none;
   outline: none;
   border-radius: 50%;
   width: 77px;
   height: 77px;
   text-align: center;
+  margin: 5px;
   transition: width 0.4s, height 0.4s;
 }
 
@@ -144,6 +145,8 @@
   padding-top: 7px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
+  text-align: center;
+  margin-bottom: 15px;
   opacity: 0;
   transition: opacity 0.4s;
 }
