@@ -23,6 +23,12 @@ window.addEventListener("load", () => {
         endpointButton_1.style.backgroundColor = "#449696";
       });
       endpoint_1.style.opacity = 100;
+      endpoint_1.addEventListener("mouseenter", () => {
+        clickToConfigure_1.style.opacity = 100;
+      });
+      endpoint_1.addEventListener("mouseleave", () => {
+        clickToConfigure_1.style.opacity = 0;
+      });
       //click to deactive endpoint button 1
     } else {
       endpointButton_1.style.backgroundColor = "#818181";
@@ -34,6 +40,7 @@ window.addEventListener("load", () => {
         endpointButton_1.style.backgroundColor = "#818181";
       });
       endpoint_1.style.opacity = 0;
+      configurationDetails_1.style.opacity = 0;
     }
   });
 
