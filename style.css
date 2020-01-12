@@ -34,6 +34,43 @@
   border-radius: 50%;
   background-color: #f44e4e;
   margin-bottom: 15px;
+  transition: 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.click-to-configure {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+/* Begin Transition Section: Circle grow on hover */
+
+.circle:hover {
+  width: 160px;
+  height: 160px;
+}
+
+.circle:hover .click-to-configure {
+  opacity: 100;
+}
+
+.circle:active {
+  background-color: #ce4242;
+}
+
+/* End Transition Section: Circle grow on hover */
+
+.configuration-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
 }
 
 .icon-buttons button,
@@ -68,6 +105,8 @@
   color: #f4b6b6;
 }
 
+/* Begin Transition Section: Configuration Details */
+
 .icon-buttons button:hover {
   background-color: #818181;
   color: white;
@@ -98,6 +137,8 @@
 .input-buttons .clear-input:active {
   background-color: #d6a1a1;
 }
+
+/* End Transition Section: Configuration Details */
 
 .toolbar {
   background-color: #f4f4f4;
