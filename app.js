@@ -6,60 +6,103 @@ window.addEventListener("load", () => {
   );
   const clickToConfigure_1 = document.querySelector(".click-to-configure-1");
   const submitInput_1 = document.querySelector(".submit-input-1");
-  const clearButton = document.querySelector(".clear-button");
 
-  //endpointButton_1 click functionality
+  //changeColor and changeOpacity functions to change styling
+
+  function changeColor(object, value) {
+    object.style.backgroundColor = value;
+  }
+
+  function changeOpacity(object, value) {
+    object.style.opacity = value;
+  }
+
+  //activateEndpoint and deactivateEndpoint functions, called when clicking on endpointButton
 
   let clickCount = 0;
-  endpointButton_1.addEventListener("click", () => {
-    //click to activate endpoint button 1
+
+  function activateEndpoint(
+    button,
+    color,
+    hoverColor,
+    endpoint,
+    configure,
+    configurationDetails
+  ) {
     if (clickCount == 0) {
-      endpointButton_1.style.backgroundColor = "#449696";
+      changeColor(button, color);
       clickCount = 1;
-      endpointButton_1.addEventListener("mouseenter", () => {
-        endpointButton_1.style.backgroundColor = "#2d8282";
+      button.addEventListener("mouseenter", () => {
+        changeColor(button, hoverColor);
       });
-      endpointButton_1.addEventListener("mouseleave", () => {
-        endpointButton_1.style.backgroundColor = "#449696";
+      button.addEventListener("mouseleave", () => {
+        changeColor(button, color);
       });
-      endpoint_1.style.opacity = 100;
-      endpoint_1.addEventListener("mouseenter", () => {
-        clickToConfigure_1.style.opacity = 100;
+      changeOpacity(endpoint, 100);
+      endpoint.addEventListener("mouseenter", () => {
+        changeOpacity(configure, 100);
       });
-      endpoint_1.addEventListener("mouseleave", () => {
-        clickToConfigure_1.style.opacity = 0;
+      endpoint.addEventListener("mouseleave", () => {
+        changeOpacity(configure, 0);
       });
-      //click to deactive endpoint button 1
     } else {
-      endpointButton_1.style.backgroundColor = "#818181";
-      clickCount = 0;
-      endpointButton_1.addEventListener("mouseenter", () => {
-        endpointButton_1.style.backgroundColor = "#6e6e6e";
-      });
-      endpointButton_1.addEventListener("mouseleave", () => {
-        endpointButton_1.style.backgroundColor = "#818181";
-      });
-      endpoint_1.style.opacity = 0;
-      configurationDetails_1.style.opacity = 0;
+      deactivateEndpoint(button, endpoint, configurationDetails);
     }
+  }
+
+  function deactivateEndpoint(button, endpoint, configurationDetails) {
+    changeColor(button, "#818181");
+    clickCount = 0;
+    button.addEventListener("mouseenter", () => {
+      changeColor(button, "#6e6e6e");
+    });
+    button.addEventListener("mouseleave", () => {
+      changeColor(button, "#818181");
+    });
+    changeOpacity(endpoint, 0);
+    changeOpacity(configurationDetails, 0);
+  }
+
+  //calling activateEndpoint function on click of endpointButton
+
+  endpointButton_1.addEventListener("click", () => {
+    activateEndpoint(
+      endpointButton_1,
+      "#449696",
+      "#2d8282",
+      endpoint_1,
+      clickToConfigure_1,
+      configurationDetails_1
+    );
+  });
+
+  //calling showConfiguration on click of endpoint
+  endpoint_1.addEventListener("click", () => {
+    showConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
+  });
+
+  //calling submitConfiguration on click of submit
+  submitInput_1.addEventListener("click", () => {
+    submitConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
   });
 
   //endpoint_1 click functionality
-  endpoint_1.addEventListener("click", () => {
-    configurationDetails_1.style.opacity = 100;
-    clickToConfigure_1.style.opacity = 0;
-    endpoint_1.addEventListener("mouseenter", () => {
-      clickToConfigure_1.style.opacity = 0;
-    });
-  });
 
-  submitInput_1.addEventListener("click", () => {
-    configurationDetails_1.style.opacity = 0;
-    endpoint_1.addEventListener("mouseenter", () => {
-      clickToConfigure_1.style.opacity = 100;
+  function showConfiguration(endpoint, configurationDetails, configure) {
+    changeOpacity(configurationDetails, 100);
+    changeOpacity(configure, 0);
+    endpoint.addEventListener("mouseenter", () => {
+      changeOpacity(configure, 0);
     });
-    endpoint_1.addEventListener("mouseleave", () => {
-      clickToConfigure_1.style.opacity = 0;
+  }
+
+  function submitConfiguration(endpoint, configurationDetails, configure) {
+    changeOpacity(configurationDetails, 0);
+    endpoint.addEventListener("mouseenter", () => {
+      changeOpacity(configure, 100);
     });
-  });
+    endpoint.addEventListener("mouseleave", () => {
+      changeOpacity(configure, 0);
+    });
+  }
 });
