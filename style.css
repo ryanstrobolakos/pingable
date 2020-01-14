@@ -22,14 +22,10 @@
   flex-wrap: wrap;
 }
 
-.endpoints {
-  display: flex;
+#endpoint-block-1 {
+  display: none;
   flex-direction: column;
   align-items: center;
-}
-
-#endpoint-1 {
-  opacity: 0;
 }
 
 .circle {

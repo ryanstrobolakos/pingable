@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
   const endpointButton_1 = document.querySelector("#endpoint-button-1");
+  const endpointBlock_1 = document.querySelector("#endpoint-block-1");
   const endpoint_1 = document.querySelector("#endpoint-1");
   const configurationDetails_1 = document.querySelector(
     "#configuration-details-1"
@@ -7,7 +8,7 @@ window.addEventListener("load", () => {
   const clickToConfigure_1 = document.querySelector(".click-to-configure-1");
   const submitInput_1 = document.querySelector(".submit-input-1");
 
-  //changeColor and changeOpacity functions to change styling
+  //changeColor, changeOpacity, changeDisplay functions to change styling
 
   function changeColor(object, value) {
     object.style.backgroundColor = value;
@@ -15,6 +16,10 @@ window.addEventListener("load", () => {
 
   function changeOpacity(object, value) {
     object.style.opacity = value;
+  }
+
+  function changeDisplay(object, value) {
+    object.style.display = value;
   }
 
   //activateEndpoint and deactivateEndpoint functions, called when clicking on endpointButton
@@ -25,6 +30,7 @@ window.addEventListener("load", () => {
     button,
     color,
     hoverColor,
+    endpointBlock,
     endpoint,
     configure,
     configurationDetails
@@ -38,7 +44,7 @@ window.addEventListener("load", () => {
       button.addEventListener("mouseleave", () => {
         changeColor(button, color);
       });
-      changeOpacity(endpoint, 100);
+      changeDisplay(endpointBlock, "flex");
       endpoint.addEventListener("mouseenter", () => {
         changeOpacity(configure, 100);
       });
@@ -46,11 +52,11 @@ window.addEventListener("load", () => {
         changeOpacity(configure, 0);
       });
     } else {
-      deactivateEndpoint(button, endpoint, configurationDetails);
+      deactivateEndpoint(button, endpointBlock, configurationDetails);
     }
   }
 
-  function deactivateEndpoint(button, endpoint, configurationDetails) {
+  function deactivateEndpoint(button, endpointBlock, configurationDetails) {
     changeColor(button, "#818181");
     clickCount = 0;
     button.addEventListener("mouseenter", () => {
@@ -59,7 +65,7 @@ window.addEventListener("load", () => {
     button.addEventListener("mouseleave", () => {
       changeColor(button, "#818181");
     });
-    changeOpacity(endpoint, 0);
+    changeDisplay(endpointBlock, "none");
     changeOpacity(configurationDetails, 0);
   }
 
@@ -70,6 +76,7 @@ window.addEventListener("load", () => {
       endpointButton_1,
       "#449696",
       "#2d8282",
+      endpointBlock_1,
       endpoint_1,
       clickToConfigure_1,
       configurationDetails_1
