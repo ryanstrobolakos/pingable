@@ -51,6 +51,7 @@ window.addEventListener("load", () => {
       endpoint.addEventListener("mouseleave", () => {
         changeOpacity(configure, 0);
       });
+      configurationDetails.style.animation = "none";
     } else {
       deactivateEndpoint(button, endpointBlock, configurationDetails);
     }
@@ -96,6 +97,7 @@ window.addEventListener("load", () => {
   //endpoint_1 click functionality
 
   function showConfiguration(endpoint, configurationDetails, configure) {
+    configurationDetails.style.animation = "fadeDown 0.5s";
     changeOpacity(configurationDetails, 100);
     changeOpacity(configure, 0);
     endpoint.addEventListener("mouseenter", () => {
@@ -104,6 +106,7 @@ window.addEventListener("load", () => {
   }
 
   function submitConfiguration(endpoint, configurationDetails, configure) {
+    configurationDetails.style.animation = "fadeUp 0.5s";
     changeOpacity(configurationDetails, 0);
     endpoint.addEventListener("mouseenter", () => {
       changeOpacity(configure, 100);
