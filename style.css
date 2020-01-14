@@ -22,7 +22,7 @@
   flex-wrap: wrap;
 }
 
-#endpoint-block-1 {
+.endpoints {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -41,7 +41,7 @@
   justify-content: center;
 }
 
-.click-to-configure-1 {
+.click-to-configure {
   font-family: "Roboto", sans-serif;
   text-align: center;
   color: white;
@@ -56,7 +56,7 @@
   height: 160px;
 }
 
-.circle:hover .click-to-configure-1 {
+.circle:hover .click-to-configure {
   opacity: 100;
 }
 
@@ -95,7 +95,7 @@
   text-align: center;
 }
 
-.input-buttons .submit-input-1 {
+.input-buttons .submit-input {
   background-color: white;
   color: #bfe4ad;
 }
@@ -120,12 +120,12 @@
   border: 0.5px solid #449696;
 }
 
-.input-buttons .submit-input-1:hover {
+.input-buttons .submit-input:hover {
   background-color: #bfe4ad;
   color: white;
 }
 
-.input-buttons .submit-input-1:active {
+.input-buttons .submit-input:active {
   background-color: #a4c494;
 }
 

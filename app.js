@@ -5,8 +5,8 @@ window.addEventListener("load", () => {
   const configurationDetails_1 = document.querySelector(
     "#configuration-details-1"
   );
-  const clickToConfigure_1 = document.querySelector(".click-to-configure-1");
-  const submitInput_1 = document.querySelector(".submit-input-1");
+  const clickToConfigure_1 = document.querySelector("#click-to-configure-1");
+  const submitInput_1 = document.querySelector("#submit-input-1");
 
   //changeColor, changeOpacity, changeDisplay functions to change styling
 
