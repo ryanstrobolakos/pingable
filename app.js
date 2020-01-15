@@ -134,8 +134,8 @@ window.addEventListener("load", () => {
   const printerIcon = "fas fa-print";
   const networkDeviceIcon = "fas fa-arrows-alt";
 
-  function changeIcon(icon, iconId, value) {
-    icon.addEventListener("click", () => {
+  function changeIcon(button, iconId, value) {
+    button.addEventListener("click", () => {
       iconId.className = value;
     });
   }
