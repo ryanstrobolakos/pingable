@@ -41,6 +41,12 @@
   justify-content: center;
 }
 
+.circle i {
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
+
 .click-to-configure {
   font-family: "Roboto", sans-serif;
   text-align: center;
