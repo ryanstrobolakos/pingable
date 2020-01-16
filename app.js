@@ -16,6 +16,9 @@ window.addEventListener("load", () => {
   const printer_1 = document.querySelector("#printer-1");
   const networkDevice_1 = document.querySelector("#network-device-1");
 
+  const configurationForm_1 = document.querySelector("#configuration-form-1");
+  const clearInput_1 = document.querySelector("#clear-input-1");
+
   //changeColor, changeOpacity, changeDisplay functions to change styling
 
   function changeColor(object, value) {
@@ -41,7 +44,9 @@ window.addEventListener("load", () => {
     endpointBlock,
     endpoint,
     configure,
-    configurationDetails
+    configurationDetails,
+    configurationForm,
+    iconId
   ) {
     if (clickCount == 0) {
       changeColor(button, color);
@@ -61,11 +66,23 @@ window.addEventListener("load", () => {
       });
       configurationDetails.style.animation = "none";
     } else {
-      deactivateEndpoint(button, endpointBlock, configurationDetails);
+      deactivateEndpoint(
+        button,
+        endpointBlock,
+        configurationDetails,
+        configurationForm,
+        iconId
+      );
     }
   }
 
-  function deactivateEndpoint(button, endpointBlock, configurationDetails) {
+  function deactivateEndpoint(
+    button,
+    endpointBlock,
+    configurationDetails,
+    configurationForm,
+    iconId
+  ) {
     changeColor(button, "#818181");
     clickCount = 0;
     button.addEventListener("mouseenter", () => {
@@ -76,7 +93,7 @@ window.addEventListener("load", () => {
     });
     changeDisplay(endpointBlock, "none");
     changeOpacity(configurationDetails, 0);
-    changeIcon(button, iconId_1, defaultIcon); //may need to change this to reset function once created
+    resetConfiguration(button, configurationForm, iconId);
   }
 
   //calling activateEndpoint function on click of endpointButton
@@ -89,7 +106,9 @@ window.addEventListener("load", () => {
       endpointBlock_1,
       endpoint_1,
       clickToConfigure_1,
-      configurationDetails_1
+      configurationDetails_1,
+      configurationForm_1,
+      iconId_1
     );
   });
 
@@ -140,9 +159,24 @@ window.addEventListener("load", () => {
     });
   }
 
+  function resetIcon(iconId) {
+    iconId.className = defaultIcon;
+  }
+
   changeIcon(website_1, iconId_1, websiteIcon);
   changeIcon(server_1, iconId_1, serverIcon);
   changeIcon(computer_1, iconId_1, computerIcon);
   changeIcon(printer_1, iconId_1, printerIcon);
   changeIcon(networkDevice_1, iconId_1, networkDeviceIcon);
+
+  //Reset Configuration Details functionality
+
+  function resetConfiguration(button, configurationForm, iconId) {
+    button.addEventListener("click", () => {
+      configurationForm.reset();
+      resetIcon(iconId);
+    });
+  }
+
+  resetConfiguration(clearInput_1, configurationForm_1, iconId_1);
 });
