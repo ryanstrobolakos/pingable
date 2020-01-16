@@ -19,6 +19,7 @@ window.addEventListener("load", () => {
   const configurationForm_1 = document.querySelector("#configuration-form-1");
   const clearInput_1 = document.querySelector("#clear-input-1");
 
+  //**GENERAL FUNCTIONS
   //changeColor, changeOpacity, changeDisplay functions to change styling
 
   function changeColor(object, value) {
@@ -33,10 +34,10 @@ window.addEventListener("load", () => {
     object.style.display = value;
   }
 
-  //activateEndpoint and deactivateEndpoint functions, called when clicking on endpointButton
+  //**activateEndpoint and deactivateEndpoint FUNCTIONS
+  //called when clicking on endpointButton
 
   let clickCount = 0;
-
   function activateEndpoint(
     button,
     color,
@@ -97,7 +98,6 @@ window.addEventListener("load", () => {
   }
 
   //calling activateEndpoint function on click of endpointButton
-
   endpointButton_1.addEventListener("click", () => {
     activateEndpoint(
       endpointButton_1,
@@ -112,18 +112,8 @@ window.addEventListener("load", () => {
     );
   });
 
-  //calling showConfiguration on click of endpoint
-  showConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
-
-  //calling submitConfiguration on click of submit
-  submitConfiguration(
-    submitInput_1,
-    endpoint_1,
-    configurationDetails_1,
-    clickToConfigure_1
-  );
-
-  //endpoint_1 click functionality
+  //**ENDPOINT CLICK FUNCTIONALITY
+  //showConfiguration and submitConfiguration functions
 
   function showConfiguration(endpoint, configurationDetails, configure) {
     endpoint.addEventListener("click", () => {
@@ -154,7 +144,19 @@ window.addEventListener("load", () => {
     });
   }
 
-  //Change Icon functionality
+  //calling showConfiguration on click of endpoint
+  showConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
+
+  //calling submitConfiguration on click of submit button
+  submitConfiguration(
+    submitInput_1,
+    endpoint_1,
+    configurationDetails_1,
+    clickToConfigure_1
+  );
+
+  //**CHANGE ICON FUNCTIONALITY
+  //icon constants, changeIcon function, and resetIcon function
 
   const defaultIcon = "fas fa-question";
   const websiteIcon = "far fa-address-card";
@@ -173,13 +175,14 @@ window.addEventListener("load", () => {
     iconId.className = defaultIcon;
   }
 
+  //calling changeIcon function for each icon
   changeIcon(website_1, iconId_1, websiteIcon);
   changeIcon(server_1, iconId_1, serverIcon);
   changeIcon(computer_1, iconId_1, computerIcon);
   changeIcon(printer_1, iconId_1, printerIcon);
   changeIcon(networkDevice_1, iconId_1, networkDeviceIcon);
 
-  //Reset Configuration Details functionality
+  //**RESET CONFIGURATION DETAILS FUNCTIONALITY
 
   function resetConfiguration(button, configurationForm, iconId) {
     button.addEventListener("click", () => {
@@ -188,5 +191,6 @@ window.addEventListener("load", () => {
     });
   }
 
+  //calling resetConfiguration on click of clear button
   resetConfiguration(clearInput_1, configurationForm_1, iconId_1);
 });
