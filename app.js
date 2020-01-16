@@ -113,34 +113,44 @@ window.addEventListener("load", () => {
   });
 
   //calling showConfiguration on click of endpoint
-  endpoint_1.addEventListener("click", () => {
-    showConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
-  });
+  showConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
 
   //calling submitConfiguration on click of submit
-  submitInput_1.addEventListener("click", () => {
-    submitConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
-  });
+  submitConfiguration(
+    submitInput_1,
+    endpoint_1,
+    configurationDetails_1,
+    clickToConfigure_1
+  );
 
   //endpoint_1 click functionality
 
   function showConfiguration(endpoint, configurationDetails, configure) {
-    configurationDetails.style.animation = "fadeDown 0.5s";
-    changeOpacity(configurationDetails, 100);
-    changeOpacity(configure, 0);
-    endpoint.addEventListener("mouseenter", () => {
+    endpoint.addEventListener("click", () => {
+      configurationDetails.style.animation = "fadeDown 0.5s";
+      changeOpacity(configurationDetails, 100);
       changeOpacity(configure, 0);
+      endpoint.addEventListener("mouseenter", () => {
+        changeOpacity(configure, 0);
+      });
     });
   }
 
-  function submitConfiguration(endpoint, configurationDetails, configure) {
-    configurationDetails.style.animation = "fadeUp 0.5s";
-    changeOpacity(configurationDetails, 0);
-    endpoint.addEventListener("mouseenter", () => {
-      changeOpacity(configure, 100);
-    });
-    endpoint.addEventListener("mouseleave", () => {
-      changeOpacity(configure, 0);
+  function submitConfiguration(
+    button,
+    endpoint,
+    configurationDetails,
+    configure
+  ) {
+    button.addEventListener("click", () => {
+      configurationDetails.style.animation = "fadeUp 0.5s";
+      changeOpacity(configurationDetails, 0);
+      endpoint.addEventListener("mouseenter", () => {
+        changeOpacity(configure, 100);
+      });
+      endpoint.addEventListener("mouseleave", () => {
+        changeOpacity(configure, 0);
+      });
     });
   }
 
