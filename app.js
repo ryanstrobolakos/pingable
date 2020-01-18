@@ -19,6 +19,11 @@ window.addEventListener("load", () => {
   const configurationForm_1 = document.querySelector("#configuration-form-1");
   const clearInput_1 = document.querySelector("#clear-input-1");
 
+  const name_1 = document.querySelector("#name-1");
+  let nameText_1 = "";
+  const ipAddress_1 = document.querySelector("#ip-address-1");
+  let ipAddressText_1 = "";
+
   //**GENERAL FUNCTIONS
   //changeColor, changeOpacity, changeDisplay functions to change styling
 
@@ -130,7 +135,11 @@ window.addEventListener("load", () => {
     button,
     endpoint,
     configurationDetails,
-    configure
+    configure,
+    nameText,
+    nameField,
+    ipAddressText,
+    ipAddressField
   ) {
     button.addEventListener("click", () => {
       configurationDetails.style.animation = "fadeUp 0.5s";
@@ -141,6 +150,8 @@ window.addEventListener("load", () => {
       endpoint.addEventListener("mouseleave", () => {
         changeOpacity(configure, 0);
       });
+      nameText = nameField.value;
+      ipAddressText = ipAddressField.value;
     });
   }
 
@@ -152,7 +163,11 @@ window.addEventListener("load", () => {
     submitInput_1,
     endpoint_1,
     configurationDetails_1,
-    clickToConfigure_1
+    clickToConfigure_1,
+    nameText_1,
+    name_1,
+    ipAddressText_1,
+    ipAddress_1
   );
 
   //**CHANGE ICON FUNCTIONALITY
