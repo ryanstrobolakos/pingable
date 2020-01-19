@@ -75,6 +75,7 @@ window.addEventListener("load", () => {
       deactivateEndpoint(
         button,
         endpointBlock,
+        endpoint,
         configurationDetails,
         configurationForm,
         iconId
@@ -85,6 +86,7 @@ window.addEventListener("load", () => {
   function deactivateEndpoint(
     button,
     endpointBlock,
+    endpoint,
     configurationDetails,
     configurationForm,
     iconId
@@ -99,7 +101,7 @@ window.addEventListener("load", () => {
     });
     changeDisplay(endpointBlock, "none");
     changeOpacity(configurationDetails, 0);
-    resetConfiguration(button, configurationForm, iconId);
+    resetConfiguration(button, configurationForm, iconId, endpoint);
   }
 
   //calling activateEndpoint function on click of endpointButton
@@ -152,7 +154,26 @@ window.addEventListener("load", () => {
       });
       nameText = nameField.value;
       ipAddressText = ipAddressField.value;
+      ping(ipAddressText, endpoint);
     });
+  }
+
+  //ping function using AJAX to send info to server
+  function ping(ipAddressText, endpoint) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        const response = this.responseText;
+        console.log(response);
+        if (response == "true") {
+          changeColor(endpoint, "#A5CA93");
+        } else {
+          changeColor(endpoint, "#f44e4e");
+        }
+      }
+    };
+    xhttp.open("POST", "http://localhost:8080", true);
+    xhttp.send(ipAddressText);
   }
 
   //calling showConfiguration on click of endpoint
@@ -199,13 +220,14 @@ window.addEventListener("load", () => {
 
   //**RESET CONFIGURATION DETAILS FUNCTIONALITY
 
-  function resetConfiguration(button, configurationForm, iconId) {
+  function resetConfiguration(button, configurationForm, iconId, endpoint) {
     button.addEventListener("click", () => {
       configurationForm.reset();
       resetIcon(iconId);
+      changeColor(endpoint, "#f44e4e");
     });
   }
 
   //calling resetConfiguration on click of clear button
-  resetConfiguration(clearInput_1, configurationForm_1, iconId_1);
+  resetConfiguration(clearInput_1, configurationForm_1, iconId_1, endpoint_1);
 });
