@@ -149,6 +149,22 @@
 
 /* End Transition Section: Configuration Details */
 
+.endpoint-details {
+  position: absolute;
+  top: 52%;
+  transition: opacity 0.5s ease;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.fadeIn {
+  opacity: 100;
+}
+
 .toolbar {
   background-color: #f4f4f4;
   width: 120px;

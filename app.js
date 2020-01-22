@@ -19,6 +19,8 @@ window.addEventListener("load", () => {
   const configurationForm_1 = document.querySelector("#configuration-form-1");
   const clearInput_1 = document.querySelector("#clear-input-1");
 
+  const endpointDetails_1 = document.querySelector("#endpoint-details-1");
+
   const name_1 = document.querySelector("#name-1");
   let nameText_1 = "";
   const ipAddress_1 = document.querySelector("#ip-address-1");
@@ -122,11 +124,17 @@ window.addEventListener("load", () => {
   //**ENDPOINT CLICK FUNCTIONALITY
   //showConfiguration and submitConfiguration functions
 
-  function showConfiguration(endpoint, configurationDetails, configure) {
+  function showConfiguration(
+    endpoint,
+    configurationDetails,
+    configure,
+    endpointDetails
+  ) {
     endpoint.addEventListener("click", () => {
       configurationDetails.style.animation = "fadeDown 0.5s";
       changeOpacity(configurationDetails, 100);
       changeOpacity(configure, 0);
+      endpointDetails.className = "endpoint-details fadeOut";
       endpoint.addEventListener("mouseenter", () => {
         changeOpacity(configure, 0);
       });
@@ -138,6 +146,7 @@ window.addEventListener("load", () => {
     endpoint,
     configurationDetails,
     configure,
+    endpointDetails,
     nameText,
     nameField,
     ipAddressText,
@@ -146,6 +155,7 @@ window.addEventListener("load", () => {
     button.addEventListener("click", () => {
       configurationDetails.style.animation = "fadeUp 0.5s";
       changeOpacity(configurationDetails, 0);
+      endpointDetails.className = "endpoint-details fadeIn";
       endpoint.addEventListener("mouseenter", () => {
         changeOpacity(configure, 100);
       });
@@ -177,7 +187,12 @@ window.addEventListener("load", () => {
   }
 
   //calling showConfiguration on click of endpoint
-  showConfiguration(endpoint_1, configurationDetails_1, clickToConfigure_1);
+  showConfiguration(
+    endpoint_1,
+    configurationDetails_1,
+    clickToConfigure_1,
+    endpointDetails_1
+  );
 
   //calling submitConfiguration on click of submit button
   submitConfiguration(
@@ -185,6 +200,7 @@ window.addEventListener("load", () => {
     endpoint_1,
     configurationDetails_1,
     clickToConfigure_1,
+    endpointDetails_1,
     nameText_1,
     name_1,
     ipAddressText_1,
