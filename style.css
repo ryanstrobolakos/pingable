@@ -79,7 +79,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s;
 }
 
 .icon-buttons button,
@@ -152,13 +153,14 @@
 .endpoint-details {
   position: absolute;
   top: 52%;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.2s, visibility 0.2s;
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
 
 .fadeOut {
   opacity: 0;
+  visibility: hidden;
 }
 
 .fadeIn {

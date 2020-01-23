@@ -22,7 +22,8 @@ window.addEventListener("load", () => {
   const endpointDetails_1 = document.querySelector("#endpoint-details-1");
 
   const name_1 = document.querySelector("#name-1");
-  let nameText_1 = "";
+  const endpointName_1 = document.querySelector("#endpoint-name-1");
+  // let nameText_1 = "";
   const ipAddress_1 = document.querySelector("#ip-address-1");
   let ipAddressText_1 = "";
 
@@ -35,6 +36,10 @@ window.addEventListener("load", () => {
 
   function changeOpacity(object, value) {
     object.style.opacity = value;
+  }
+
+  function changeVisibility(object, value) {
+    object.style.visibility = value;
   }
 
   function changeDisplay(object, value) {
@@ -102,7 +107,7 @@ window.addEventListener("load", () => {
       changeColor(button, "#818181");
     });
     changeDisplay(endpointBlock, "none");
-    changeOpacity(configurationDetails, 0);
+    changeVisibility(configurationDetails, "hidden");
     resetConfiguration(button, configurationForm, iconId, endpoint);
   }
 
@@ -132,7 +137,7 @@ window.addEventListener("load", () => {
   ) {
     endpoint.addEventListener("click", () => {
       configurationDetails.style.animation = "fadeDown 0.5s";
-      changeOpacity(configurationDetails, 100);
+      changeVisibility(configurationDetails, "visible");
       changeOpacity(configure, 0);
       endpointDetails.className = "endpoint-details fadeOut";
       endpoint.addEventListener("mouseenter", () => {
@@ -147,14 +152,14 @@ window.addEventListener("load", () => {
     configurationDetails,
     configure,
     endpointDetails,
-    nameText,
+    endpointName,
     nameField,
     ipAddressText,
     ipAddressField
   ) {
     button.addEventListener("click", () => {
       configurationDetails.style.animation = "fadeUp 0.5s";
-      changeOpacity(configurationDetails, 0);
+      changeVisibility(configurationDetails, "hidden");
       endpointDetails.className = "endpoint-details fadeIn";
       endpoint.addEventListener("mouseenter", () => {
         changeOpacity(configure, 100);
@@ -162,7 +167,7 @@ window.addEventListener("load", () => {
       endpoint.addEventListener("mouseleave", () => {
         changeOpacity(configure, 0);
       });
-      nameText = nameField.value;
+      endpointName.innerHTML = nameField.value;
       ipAddressText = ipAddressField.value;
       ping(ipAddressText, endpoint);
     });
@@ -201,7 +206,7 @@ window.addEventListener("load", () => {
     configurationDetails_1,
     clickToConfigure_1,
     endpointDetails_1,
-    nameText_1,
+    endpointName_1,
     name_1,
     ipAddressText_1,
     ipAddress_1
