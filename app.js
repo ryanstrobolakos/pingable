@@ -27,6 +27,8 @@ window.addEventListener("load", () => {
   const ipAddress_1 = document.querySelector("#ip-address-1");
   let ipAddressText_1 = "";
 
+  let repeatPing;
+
   //**GENERAL FUNCTIONS
   //changeColor, changeOpacity, changeDisplay functions to change styling
 
@@ -109,6 +111,7 @@ window.addEventListener("load", () => {
     changeDisplay(endpointBlock, "none");
     changeVisibility(configurationDetails, "hidden");
     resetConfiguration(button, configurationForm, iconId, endpoint);
+    clearTimeout(repeatPing);
   }
 
   //calling activateEndpoint function on click of endpointButton
@@ -180,6 +183,9 @@ window.addEventListener("load", () => {
       if (this.readyState == 4 && this.status == 200) {
         const response = this.responseText;
         console.log(response);
+        repeatPing = setTimeout(function() {
+          ping(ipAddressText, endpoint);
+        }, 5000);
         if (response == "true") {
           changeColor(endpoint, "#A5CA93");
         } else {
@@ -246,6 +252,7 @@ window.addEventListener("load", () => {
       configurationForm.reset();
       resetIcon(iconId);
       changeColor(endpoint, "#f44e4e");
+      clearTimeout(repeatPing);
     });
   }
 
