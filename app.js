@@ -201,7 +201,11 @@ window.addEventListener("load", () => {
       });
       endpointName.innerHTML = nameField.value;
       ipAddressText = ipAddressField.value;
-      ping(ipAddressText, endpoint, totalSeconds, timeDisplay);
+      if (ipAddressText == "") timeDisplay.style.visibility = "hidden";
+      else {
+        timeDisplay.style.visibility = "visible";
+        ping(ipAddressText, endpoint, totalSeconds, timeDisplay);
+      }
     });
   }
 
