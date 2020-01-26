@@ -23,11 +23,18 @@ window.addEventListener("load", () => {
 
   const name_1 = document.querySelector("#name-1");
   const endpointName_1 = document.querySelector("#endpoint-name-1");
-  // let nameText_1 = "";
   const ipAddress_1 = document.querySelector("#ip-address-1");
   let ipAddressText_1 = "";
 
   let repeatPing;
+
+  const timeDisplay_1 = document.querySelector("#time-display-1");
+  let clock;
+  let minutes;
+  let seconds;
+  let totalSeconds_1 = {
+    value: 0
+  };
 
   //**GENERAL FUNCTIONS
   //changeColor, changeOpacity, changeDisplay functions to change styling
@@ -61,7 +68,10 @@ window.addEventListener("load", () => {
     configure,
     configurationDetails,
     configurationForm,
-    iconId
+    iconId,
+    endpointDetails,
+    totalSeconds,
+    timeDisplay
   ) {
     if (clickCount == 0) {
       changeColor(button, color);
@@ -87,7 +97,10 @@ window.addEventListener("load", () => {
         endpoint,
         configurationDetails,
         configurationForm,
-        iconId
+        iconId,
+        endpointDetails,
+        totalSeconds,
+        timeDisplay
       );
     }
   }
@@ -98,7 +111,10 @@ window.addEventListener("load", () => {
     endpoint,
     configurationDetails,
     configurationForm,
-    iconId
+    iconId,
+    endpointDetails,
+    totalSeconds,
+    timeDisplay
   ) {
     changeColor(button, "#818181");
     clickCount = 0;
@@ -110,7 +126,15 @@ window.addEventListener("load", () => {
     });
     changeDisplay(endpointBlock, "none");
     changeVisibility(configurationDetails, "hidden");
-    resetConfiguration(button, configurationForm, iconId, endpoint);
+    endpointDetails.className = "endpoint-details fadeOut";
+    resetConfiguration(
+      button,
+      configurationForm,
+      iconId,
+      endpoint,
+      totalSeconds,
+      timeDisplay
+    );
     clearTimeout(repeatPing);
   }
 
@@ -125,7 +149,10 @@ window.addEventListener("load", () => {
       clickToConfigure_1,
       configurationDetails_1,
       configurationForm_1,
-      iconId_1
+      iconId_1,
+      endpointDetails_1,
+      totalSeconds_1,
+      timeDisplay_1
     );
   });
 
@@ -158,7 +185,9 @@ window.addEventListener("load", () => {
     endpointName,
     nameField,
     ipAddressText,
-    ipAddressField
+    ipAddressField,
+    totalSeconds,
+    timeDisplay
   ) {
     button.addEventListener("click", () => {
       configurationDetails.style.animation = "fadeUp 0.5s";
@@ -172,24 +201,53 @@ window.addEventListener("load", () => {
       });
       endpointName.innerHTML = nameField.value;
       ipAddressText = ipAddressField.value;
-      ping(ipAddressText, endpoint);
+      ping(ipAddressText, endpoint, totalSeconds, timeDisplay);
     });
   }
 
+  //clock functionality - startClock, clockTimer, and resetClock functions
+  function startClock(totalSeconds, timeDisplay) {
+    clock = setInterval(() => {
+      clockTimer(totalSeconds, timeDisplay);
+    }, 1000);
+  }
+
+  function clockTimer(totalSeconds, timeDisplay) {
+    ++totalSeconds.value;
+    minutes = Math.floor(totalSeconds.value / 60);
+    seconds = Math.floor(totalSeconds.value % 60);
+    if (seconds < 10) seconds = "0" + seconds;
+
+    timeDisplay.innerHTML = `${minutes}:${seconds}`;
+  }
+
+  function resetClock(totalSeconds, timeDisplay) {
+    clearInterval(clock);
+    totalSeconds.value = 0;
+    minutes = 0;
+    seconds = "0" + 0;
+
+    timeDisplay.innerHTML = `${minutes}:${seconds}`;
+  }
+
   //ping function using AJAX to send info to server
-  function ping(ipAddressText, endpoint) {
+  function ping(ipAddressText, endpoint, totalSeconds, timeDisplay) {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         const response = this.responseText;
         console.log(response);
         repeatPing = setTimeout(function() {
-          ping(ipAddressText, endpoint);
+          ping(ipAddressText, endpoint, totalSeconds, timeDisplay);
         }, 5000);
         if (response == "true") {
           changeColor(endpoint, "#A5CA93");
+          resetClock(totalSeconds, timeDisplay);
+          startClock(totalSeconds, timeDisplay);
         } else {
           changeColor(endpoint, "#f44e4e");
+          resetClock(totalSeconds, timeDisplay);
+          startClock(totalSeconds, timeDisplay);
         }
       }
     };
@@ -215,7 +273,9 @@ window.addEventListener("load", () => {
     endpointName_1,
     name_1,
     ipAddressText_1,
-    ipAddress_1
+    ipAddress_1,
+    totalSeconds_1,
+    timeDisplay_1
   );
 
   //**CHANGE ICON FUNCTIONALITY
@@ -247,15 +307,30 @@ window.addEventListener("load", () => {
 
   //**RESET CONFIGURATION DETAILS FUNCTIONALITY
 
-  function resetConfiguration(button, configurationForm, iconId, endpoint) {
+  function resetConfiguration(
+    button,
+    configurationForm,
+    iconId,
+    endpoint,
+    totalSeconds,
+    timeDisplay
+  ) {
     button.addEventListener("click", () => {
       configurationForm.reset();
       resetIcon(iconId);
       changeColor(endpoint, "#f44e4e");
       clearTimeout(repeatPing);
+      resetClock(totalSeconds, timeDisplay);
     });
   }
 
   //calling resetConfiguration on click of clear button
-  resetConfiguration(clearInput_1, configurationForm_1, iconId_1, endpoint_1);
+  resetConfiguration(
+    clearInput_1,
+    configurationForm_1,
+    iconId_1,
+    endpoint_1,
+    totalSeconds_1,
+    timeDisplay_1
+  );
 });
